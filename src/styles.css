@@ -6,7 +6,7 @@ html, body {
   font-family: 'Poppins', sans-serif, Arial, sans-serif; /* Ensures consistent font */
 
   /* Green Gradient Background */
-  background: linear-gradient(to right, #009688, #b2dfdb);
+  background: linear-gradient(to right, #a0a1a3, #9da1a5);
 
 
   background-attachment: fixed; /* Ensures it stays on scroll */

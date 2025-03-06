@@ -1,17 +1,24 @@
-<app-navbar></app-navbar> <!-- Navigation Bar -->
+<app-navbar></app-navbar>
 
 <div class="main-container">
   <!-- Left Column: Task List -->
   <div class="left-column">
     <h2 class="section-title">📝 Your Tasks</h2>
-    <app-task-list></app-task-list>
+    <app-task-list
+      #taskList>
+    </app-task-list>
   </div>
 
   <!-- Right Column: Task Form -->
   <div class="right-column">
-    <h2 class="section-title">➕ Add a Task</h2>
-    <app-task-form></app-task-form>
+    <h2 class="section-title">➕ {{ taskList.taskToEdit ? 'Edit Task' : 'Add a Task' }}</h2>
+    <app-task-form
+      [taskToEdit]="taskList.taskToEdit"
+      (taskAdded)="taskList.addTask($event)"
+      (taskUpdated)="taskList.updateTask($event)">
+    </app-task-form>
   </div>
 </div>
+
 
 

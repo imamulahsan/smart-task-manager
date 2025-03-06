@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { Task } from '../../models/task.model';
 
 @Component({
@@ -8,10 +8,12 @@ import { Task } from '../../models/task.model';
 })
 export class TaskFormComponent {
 
-  @Output() taskAdded = new EventEmitter<Task>(); // Event to send new task to parent component
+  @Output() taskAdded = new EventEmitter<Task>();
+  @Output() taskUpdated = new EventEmitter<Task>();
+  @Input() taskToEdit: Task | null = null;
 
   task: Task = {
-    id: Math.floor(Math.random() * 1000), // Temporary unique ID
+    id: Math.floor(Math.random() * 1000),
     title: '',
     description: '',
     dueDate: '',
@@ -19,8 +21,18 @@ export class TaskFormComponent {
     completed: false
   };
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['taskToEdit'] && this.taskToEdit) {
+      this.task = { ...this.taskToEdit }; // Pre-fill the form for editing
+    }
+  }
+
   submitTask() {
-    this.taskAdded.emit(this.task); // Emit event to parent
+    if (this.taskToEdit) {
+      this.taskUpdated.emit(this.task); // Emit event when updating
+    } else {
+      this.taskAdded.emit(this.task); // Emit event when adding a new task
+    }
     this.resetForm();
   }
 

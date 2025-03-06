@@ -3,6 +3,27 @@
   margin: auto;
   padding: 20px;
 }
+
+/* Filter UI Styling */
+.filter-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+mat-form-field {
+  width: 200px;
+}
+
+button {
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
 .section-title {
   text-align: center;
   font-size: 22px;
@@ -15,12 +36,12 @@
 .task-card {
   margin: 15px 0;
   padding: 20px;
-  border-left: 5px solid #0277bd; /* Deep Blue-Green for contrast */
+  border-left: 5px solid #e9eb97; /* Deep Blue-Green for contrast */
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 
   /* Light Bluish Emerald Gradient */
-  background: linear-gradient(to right, #b2ebf2, #e0f7fa);
+  background: linear-gradient(to right, #ccc9c9, #e1e1e4);
   transition: transform 0.2s ease-in-out, box-shadow 0.3s;
 }
 

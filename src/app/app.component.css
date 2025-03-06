@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to right, #ff9a9e, #fad0c4); /* Gradient Background */
+  background: linear-gradient(to right, #838181, #dddcdc); /* Gradient Background */
   color: #333;
 }
 
@@ -16,7 +16,7 @@ body {
 
 .left-column, .right-column {
   flex: 1;
-  background: linear-gradient(to right, #cfd8dc, #b2dfdb); /* Greyish Emerald */
+  background: linear-gradient(to right, #dfe1e4, #e2e4e7); /* Greyish Emerald */
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
@@ -32,7 +32,7 @@ body {
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #6a0572; /* Deep purple for contrast */
+  color: #00273d; /* Deep purple for contrast */
 }
 
 /* 📌 Responsive Design for Tablets & Mobile */

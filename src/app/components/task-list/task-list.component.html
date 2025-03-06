@@ -1,8 +1,32 @@
-
 <div class="task-list-container">
+  <!-- Filter Options -->
+  <div class="filter-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Filter by Priority</mat-label>
+      <mat-select [(ngModel)]="selectedPriority" (selectionChange)="filterTasks()">
+        <mat-option value="">All</mat-option>
+        <mat-option value="High">High</mat-option>
+        <mat-option value="Medium">Medium</mat-option>
+        <mat-option value="Low">Low</mat-option>
+      </mat-select>
+    </mat-form-field>
 
+    <mat-form-field appearance="fill">
+      <mat-label>Filter by Status</mat-label>
+      <mat-select [(ngModel)]="selectedStatus" (selectionChange)="filterTasks()">
+        <mat-option value="">All</mat-option>
+        <mat-option value="completed">Completed</mat-option>
+        <mat-option value="notCompleted">Not Completed</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <mat-card *ngFor="let task of tasks" class="task-card">
+    <button mat-raised-button color="primary" (click)="sortByDueDate()">
+      <mat-icon>sort</mat-icon> Sort by Date
+    </button>
+  </div>
+
+  <!-- Task List -->
+  <mat-card *ngFor="let task of filteredTasks" class="task-card">
     <mat-card-header class="task-header">
       <mat-card-title>{{ task.title }}</mat-card-title>
       <mat-chip class="priority-chip" [ngClass]="getPriorityClass(task.priority)">
@@ -20,11 +44,16 @@
         <mat-icon>{{ task.completed ? 'check_circle' : 'radio_button_unchecked' }}</mat-icon>
         {{ task.completed ? 'Completed' : 'Mark as Done' }}
       </button>
+      <button mat-raised-button color="accent" (click)="editTask(task)">
+        <mat-icon>edit</mat-icon> Edit
+      </button>
       <button mat-raised-button color="warn" (click)="deleteTask(task.id)">
         <mat-icon>delete</mat-icon> Delete
       </button>
     </mat-card-actions>
   </mat-card>
 </div>
+
+
 
 

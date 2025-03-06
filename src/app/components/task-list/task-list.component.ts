@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Task } from '../../models/task.model';
 
 @Component({
@@ -6,20 +6,80 @@ import { Task } from '../../models/task.model';
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css'
 })
-export class TaskListComponent {
+export class TaskListComponent implements OnInit{
 
-  tasks: Task[] = [
-    { id: 1, title: "Complete Angular Project", description: "Finish UI and backend integration", dueDate: "2025-03-10", priority: "High", completed: false },
-    { id: 2, title: "Read a Book", description: "Finish reading 'Atomic Habits'", dueDate: "2025-03-12", priority: "Medium", completed: false },
-    { id: 3, title: "Workout", description: "Morning Yoga and Strength Training", dueDate: "2025-03-15", priority: "Low", completed: true }
-  ];
+  tasks: Task[] = [];
+  filteredTasks: Task[] = [];
+
+  taskToEdit: Task | null = null;
+  selectedPriority: string = '';
+  selectedStatus: string = '';
+
+  constructor() {}
+
+  ngOnInit() {
+    this.loadTasks();
+  }
+
+  addTask(newTask: Task) {
+    this.tasks.push(newTask);
+    this.saveTasks();
+    this.filterTasks(); // Re-filter tasks after adding
+  }
+
+  editTask(task: Task) {
+    this.taskToEdit = { ...task };
+  }
+
+  updateTask(updatedTask: Task) {
+    const index = this.tasks.findIndex(t => t.id === updatedTask.id);
+    if (index !== -1) {
+      this.tasks[index] = updatedTask;
+    }
+    this.taskToEdit = null;
+    this.saveTasks();
+    this.filterTasks();
+  }
 
   toggleCompletion(task: Task) {
     task.completed = !task.completed;
+    this.saveTasks();
+    this.filterTasks();
   }
 
   deleteTask(id: number) {
     this.tasks = this.tasks.filter(task => task.id !== id);
+    this.saveTasks();
+    this.filterTasks();
+  }
+
+  saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+  }
+
+  loadTasks() {
+    const storedTasks = localStorage.getItem('tasks');
+    if (storedTasks) {
+      this.tasks = JSON.parse(storedTasks);
+    }
+    this.filterTasks();
+  }
+
+  /*** 📌 Filter Tasks Based on User Selection ***/
+  filterTasks() {
+    this.filteredTasks = this.tasks.filter(task => {
+      const priorityMatch = this.selectedPriority ? task.priority === this.selectedPriority : true;
+      const statusMatch =
+        this.selectedStatus === 'completed' ? task.completed :
+        this.selectedStatus === 'notCompleted' ? !task.completed :
+        true;
+      return priorityMatch && statusMatch;
+    });
+  }
+
+  /*** 📌 Sort Tasks by Due Date ***/
+  sortByDueDate() {
+    this.filteredTasks.sort((a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime());
   }
 
   getPriorityClass(priority: string) {
@@ -29,9 +89,4 @@ export class TaskListComponent {
       'low-priority': priority === 'Low'
     };
   }
-
-  addTask(newTask: Task) {
-    this.tasks.push(newTask);
-  }
-
 }
