@@ -1,4 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+/* Ensure font is applied to all elements */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif, Arial, sans-serif; /* Ensures consistent font */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  /* Green Gradient Background */
+  background: linear-gradient(to right, #009688, #b2dfdb);
+
+
+  background-attachment: fixed; /* Ensures it stays on scroll */
+  background-size: cover; /* Stretches to full screen */
+  color: #333;
+}
+
+/* Reset styles */
+* {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+
+/* Reset default styles */
+* {
+  box-sizing: border-box;
+  font-family: inherit; /* Ensures all elements inherit the font */
+}
+
+/* Ensure headings and buttons use the font */
+h1, h2, h3, h4, h5, h6, button {
+  font-family: 'Poppins', sans-serif;
+}
+

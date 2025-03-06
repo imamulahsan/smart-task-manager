@@ -30,4 +30,8 @@ export class TaskListComponent {
     };
   }
 
+  addTask(newTask: Task) {
+    this.tasks.push(newTask);
+  }
+
 }

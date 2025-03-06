@@ -1,35 +1,95 @@
 .task-list-container {
-  max-width: 600px;
+  max-width: 100%;
   margin: auto;
+  padding: 20px;
+}
+.section-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
+/* Vibrant Task Cards */
+/* Light Bluish Emerald Shine Task Cards */
 .task-card {
-  margin: 10px 0;
-  padding: 15px;
-  border-left: 5px solid #007BFF;
+  margin: 15px 0;
+  padding: 20px;
+  border-left: 5px solid #0277bd; /* Deep Blue-Green for contrast */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
+  /* Light Bluish Emerald Gradient */
+  background: linear-gradient(to right, #b2ebf2, #e0f7fa);
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s;
 }
 
-mat-card-title {
+/* Hover effect */
+.task-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.priority-chip {
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 4px;
+  color: white;
   font-weight: bold;
 }
-
 .high-priority {
   background-color: #ff5252;
-  color: white;
-  padding: 5px;
-  border-radius: 4px;
 }
 
 .medium-priority {
   background-color: #ffa726;
-  color: white;
-  padding: 5px;
-  border-radius: 4px;
 }
 
 .low-priority {
   background-color: #66bb6a;
-  color: white;
-  padding: 5px;
-  border-radius: 4px;
+}
+
+.task-description {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.due-date {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.task-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+/* Vibrant Buttons */
+.task-actions button {
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+}
+
+.task-actions button:hover {
+  transform: scale(1.05);
+}
+
+
+/* 📌 Responsive Adjustments */
+@media (max-width: 768px) {
+  .task-card {
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  .task-actions {
+    flex-direction: column; /* Buttons stack on smaller screens */
+    gap: 10px;
+  }
 }

@@ -1,6 +1,17 @@
 <app-navbar></app-navbar> <!-- Navigation Bar -->
 
-<div class="container">
-  <router-outlet></router-outlet> <!-- This will load pages dynamically -->
+<div class="main-container">
+  <!-- Left Column: Task List -->
+  <div class="left-column">
+    <h2 class="section-title">📝 Your Tasks</h2>
+    <app-task-list></app-task-list>
+  </div>
+
+  <!-- Right Column: Task Form -->
+  <div class="right-column">
+    <h2 class="section-title">➕ Add a Task</h2>
+    <app-task-form></app-task-form>
+  </div>
 </div>
+
 

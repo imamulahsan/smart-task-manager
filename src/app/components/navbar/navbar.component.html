@@ -1,11 +1,14 @@
-<mat-toolbar color="primary">
-    <span>📅 Smart Task Manager</span>
-    <span class="spacer"></span>
-    <button mat-button routerLink="/dashboard">Dashboard</button>
-    <button mat-button routerLink="/tasks">Tasks</button>
-    <button mat-button routerLink="/reports">Reports</button>
-    <button mat-icon-button aria-label="User Profile">
-      <mat-icon>account_circle</mat-icon>
-    </button>
-  </mat-toolbar>
+<mat-toolbar color="primary" class="navbar">
+  <span class="navbar-title">📅 Smart Task Manager</span>
+  <span class="spacer"></span>
+
+  <button mat-button routerLink="/dashboard" routerLinkActive="active">Dashboard</button>
+  <button mat-button routerLink="/tasks" routerLinkActive="active">Tasks</button>
+  <button mat-button routerLink="/reports" routerLinkActive="active">Reports</button>
+
+  <button mat-icon-button aria-label="User Profile">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+</mat-toolbar>
+
 

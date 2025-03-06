@@ -1,0 +1,41 @@
+<mat-card class="task-form-container">
+
+  <form (ngSubmit)="submitTask()" #taskForm="ngForm">
+
+    <!-- Task Title -->
+    <mat-form-field class="full-width">
+      <mat-label>Task Title</mat-label>
+      <input matInput type="text" required [(ngModel)]="task.title" name="title">
+    </mat-form-field>
+
+    <!-- Task Description -->
+    <mat-form-field class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput required [(ngModel)]="task.description" name="description"></textarea>
+    </mat-form-field>
+
+    <!-- Due Date -->
+    <mat-form-field class="full-width">
+      <mat-label>Due Date</mat-label>
+      <input matInput [matDatepicker]="picker" required [(ngModel)]="task.dueDate" name="dueDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- Priority Dropdown -->
+    <mat-form-field class="full-width">
+      <mat-label>Priority</mat-label>
+      <mat-select required [(ngModel)]="task.priority" name="priority">
+        <mat-option value="High">High</mat-option>
+        <mat-option value="Medium">Medium</mat-option>
+        <mat-option value="Low">Low</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Buttons -->
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid">Save Task</button>
+      <button mat-button type="button" (click)="resetForm()">Reset</button>
+    </div>
+  </form>
+</mat-card>

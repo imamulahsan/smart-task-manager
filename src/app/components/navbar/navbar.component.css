@@ -1,3 +1,47 @@
 .spacer {
   flex: 1 1 auto;
 }
+
+.navbar {
+  background: linear-gradient(to right, #0d47a1, #1976d2); /* Deep Navy Blue */
+  padding: 10px 20px;
+}
+
+.navbar-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Button Styling */
+.navbar button {
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: background 0.3s, transform 0.2s ease-in-out;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
+/* Hover Effect */
+.navbar button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* Active Button (Current Page Indicator) */
+.navbar button.active {
+  background: rgba(255, 255, 255, 0.3);
+  border-bottom: 3px solid #ffeb3b; /* Yellow indicator */
+}
+
+/* Icon Button (User Profile) */
+.navbar button[mat-icon-button] {
+  color: white;
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar button[mat-icon-button]:hover {
+  transform: rotate(15deg);
+}
