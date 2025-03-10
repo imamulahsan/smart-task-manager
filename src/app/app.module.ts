@@ -22,13 +22,19 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { TaskFormComponent } from './components/task-form/task-form.component';
+import { ReportsComponent } from './components/reports/reports.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TasksComponent } from './components/tasks/tasks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     TaskListComponent,
-    TaskFormComponent
+    TaskFormComponent,
+    ReportsComponent,
+    DashboardComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TaskListComponent } from './components/task-list/task-list.component';
-import { TaskFormComponent } from './components/task-form/task-form.component';
+import { TasksComponent } from './components/tasks/tasks.component';
+import { ReportsComponent } from './components/reports/reports.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: 'tasks', component: TaskListComponent },
-  { path: 'add-task', component: TaskFormComponent },
-  { path: '', redirectTo: '/tasks', pathMatch: 'full' }
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'tasks', component: TasksComponent },
+  { path: 'reports', component: ReportsComponent },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' } // Default route
 ];
 
 @NgModule({
