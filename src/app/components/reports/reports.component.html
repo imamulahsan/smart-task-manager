@@ -1,28 +1,51 @@
 <div class="reports-container">
   <h2 class="section-title">📊 Task Reports</h2>
 
-  <div class="report-card">
-    <h3>Total Tasks</h3>
-    <p>{{ totalTasks }}</p>
-  </div>
+  <div class="reports-grid">
+    <!-- Left Column: Report Cards -->
+    <div class="reports-left">
+      <div class="report-card">
+        <h3>Total Tasks</h3>
+        <p>{{ totalTasks }}</p>
+      </div>
 
-  <div class="report-card">
-    <h3>Completed Tasks</h3>
-    <p>{{ completedTasks }}</p>
-  </div>
+      <div class="report-card">
+        <h3>Completed Tasks</h3>
+        <p>{{ completedTasks }}</p>
+      </div>
 
-  <div class="report-card">
-    <h3>Pending Tasks</h3>
-    <p>{{ pendingTasks }}</p>
-  </div>
+      <div class="report-card">
+        <h3>Pending Tasks</h3>
+        <p>{{ pendingTasks }}</p>
+      </div>
 
-  <div class="report-card">
-    <h3>Priority Breakdown</h3>
-    <ul>
-      <li>High Priority: {{ highPriorityTasks }}</li>
-      <li>Medium Priority: {{ mediumPriorityTasks }}</li>
-      <li>Low Priority: {{ lowPriorityTasks }}</li>
-    </ul>
+      <div class="report-card">
+        <h3>Priority Breakdown</h3>
+        <ul>
+          <li>High Priority: {{ highPriorityTasks }}</li>
+          <li>Medium Priority: {{ mediumPriorityTasks }}</li>
+          <li>Low Priority: {{ lowPriorityTasks }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Middle Column: Priority Breakdown Chart -->
+    <div class="reports-middle">
+      <div class="chart-card">
+        <h3>Priority Distribution</h3>
+        <canvas id="priorityChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Right Column: Task Completion Chart -->
+    <div class="reports-right">
+      <div class="chart-card">
+        <h3>Completion Status</h3>
+        <canvas id="completionChart"></canvas>
+      </div>
+    </div>
   </div>
 </div>
+
+
 

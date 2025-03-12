@@ -1,14 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Task } from '../../models/task.model';
 import { Chart, registerables } from 'chart.js'; // ✅ Import Chart.js properly
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
-
+export class DashboardComponent implements OnInit, AfterViewInit {
   tasks: Task[] = [];
 
   totalTasks: number = 0;
@@ -18,13 +17,22 @@ export class DashboardComponent {
   mediumPriorityTasks: number = 0;
   lowPriorityTasks: number = 0;
 
+  priorityChart: any;
+  completionChart: any;
+
+  constructor() {
+    Chart.register(...registerables); // ✅ Register Chart.js modules
+  }
+
   ngOnInit() {
     this.loadTasks();
     this.generateReports();
   }
 
   ngAfterViewInit() {
-    this.loadCharts();
+    setTimeout(() => {
+      this.loadCharts(); // ✅ Ensure charts load after view initialization
+    }, 500);
   }
 
   loadTasks() {
@@ -44,27 +52,42 @@ export class DashboardComponent {
   }
 
   loadCharts() {
-    new Chart('priorityChart', {
-      type: 'pie',
-      data: {
-        labels: ['High Priority', 'Medium Priority', 'Low Priority'],
-        datasets: [{
-          data: [this.highPriorityTasks, this.mediumPriorityTasks, this.lowPriorityTasks],
-          backgroundColor: ['#ff5252', '#ffa726', '#66bb6a']
-        }]
-      }
-    });
+    // ✅ Destroy existing chart instances before creating new ones
+    if (this.priorityChart) {
+      this.priorityChart.destroy();
+    }
+    if (this.completionChart) {
+      this.completionChart.destroy();
+    }
 
-    new Chart('completionChart', {
-      type: 'bar',
-      data: {
-        labels: ['Completed', 'Pending'],
-        datasets: [{
-          data: [this.completedTasks, this.pendingTasks],
-          backgroundColor: ['#4caf50', '#f44336']
-        }]
-      }
-    });
+    // ✅ Pie Chart for Task Priority
+    const priorityCanvas = document.getElementById('priorityChart') as HTMLCanvasElement;
+    if (priorityCanvas) {
+      this.priorityChart = new Chart(priorityCanvas, {
+        type: 'pie',
+        data: {
+          labels: ['High Priority', 'Medium Priority', 'Low Priority'],
+          datasets: [{
+            data: [this.highPriorityTasks, this.mediumPriorityTasks, this.lowPriorityTasks],
+            backgroundColor: ['#ff5252', '#ffa726', '#66bb6a']
+          }]
+        }
+      });
+    }
+
+    // ✅ Bar Chart for Task Completion Status
+    const completionCanvas = document.getElementById('completionChart') as HTMLCanvasElement;
+    if (completionCanvas) {
+      this.completionChart = new Chart(completionCanvas, {
+        type: 'bar',
+        data: {
+          labels: ['Completed', 'Pending'],
+          datasets: [{
+            data: [this.completedTasks, this.pendingTasks],
+            backgroundColor: ['#4caf50', '#f44336']
+          }]
+        }
+      });
+    }
   }
-
 }

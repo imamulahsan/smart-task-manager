@@ -1,25 +1,78 @@
 .reports-container {
-  max-width: 600px;
+  max-width: 1200px;
   margin: auto;
   padding: 20px;
-  text-align: center;
 }
 
 .section-title {
+  text-align: center;
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
-.report-card {
-  background: linear-gradient(to right, #e0f7fa, #b2ebf2);
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* 📌 Three Column Layout */
+.reports-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* Three equal columns */
+  gap: 20px;
+  align-items: start;
+  min-height: 400px; /* Ensures columns remain aligned */
 }
 
-h3 {
+/* 📌 Left Column: Report Cards */
+.reports-left {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-height: 100%;
+}
+
+/* 📌 Report Card */
+.report-card {
+  background: linear-gradient(to right, #e1f5fe, #b3e5fc);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-weight: bold;
   font-size: 18px;
-  margin-bottom: 5px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 📌 Middle & Right Columns */
+.reports-middle, .reports-right {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-height: 100%;
+}
+
+/* 📌 Chart Card */
+.chart-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 📌 Make Charts Responsive */
+canvas {
+  max-width: 100%;
+  height: 250px;
+}
+
+/* 📌 Responsive Adjustments */
+@media (max-width: 1024px) {
+  .reports-grid {
+    grid-template-columns: 1fr; /* Switch to one-column layout */
+  }
 }

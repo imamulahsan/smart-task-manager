@@ -1,29 +1,39 @@
 <div class="dashboard-container">
   <h2 class="section-title">📊 Dashboard Overview</h2>
 
-  <div class="dashboard-stats">
-    <div class="stat-card">
-      <h3>Total Tasks</h3>
-      <p>{{ totalTasks }}</p>
+  <div class="dashboard-grid">
+    <!-- Left Column: Stats Cards -->
+    <div class="dashboard-left">
+      <div class="stat-card">
+        <h3>Total Tasks</h3>
+        <p>{{ totalTasks }}</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>Completed Tasks</h3>
+        <p>{{ completedTasks }}</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>Pending Tasks</h3>
+        <p>{{ pendingTasks }}</p>
+      </div>
     </div>
 
-    <div class="stat-card">
-      <h3>Completed Tasks</h3>
-      <p>{{ completedTasks }}</p>
+    <!-- Middle Column: Priority Breakdown Chart -->
+    <div class="dashboard-middle">
+      <div class="chart-card">
+        <h3>Priority Breakdown</h3>
+        <canvas id="priorityChart"></canvas>
+      </div>
     </div>
 
-    <div class="stat-card">
-      <h3>Pending Tasks</h3>
-      <p>{{ pendingTasks }}</p>
+    <!-- Right Column: Task Completion Chart -->
+    <div class="dashboard-right">
+      <div class="chart-card">
+        <h3>Task Completion</h3>
+        <canvas id="completionChart"></canvas>
+      </div>
     </div>
-  </div>
-
-  <div class="chart-container">
-    <canvas id="priorityChart"></canvas>
-  </div>
-
-  <div class="chart-container">
-    <canvas id="completionChart"></canvas>
   </div>
 </div>
-
